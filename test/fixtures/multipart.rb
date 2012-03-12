@@ -1,5 +1,5 @@
 # Contains fixturues to
-module MultipartFixtures
+module MultipartParser::Fixtures
   # Returns all fixtures in the module
   def fixtures
     [Rfc1867.new, NoTrailingCRLF.new, EmptyHeader.new]
