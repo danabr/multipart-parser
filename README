@@ -11,3 +11,7 @@ Some things to note:
 * Does not perform I/O.
 
 * Does not depend on any other library.
+
+Contributors:
+  Daniel Abrahamsson
+  Jérémy Bobbio
