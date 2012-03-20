@@ -1,4 +1,4 @@
-require File.expand_path('../parser', __FILE__)
+require 'multipart_parser/parser'
 
 module MultipartParser
   class NotMultipartError < StandardError; end;
