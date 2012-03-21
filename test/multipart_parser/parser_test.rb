@@ -1,6 +1,6 @@
 require 'test/unit'
-require File.dirname(__FILE__) + "/../../lib/multipart_parser/parser"
-require File.dirname(__FILE__) + "/../fixtures/multipart"
+require "multipart_parser/parser"
+require "fixtures/multipart"
 
 module MultipartParser
   class ParserTest < Test::Unit::TestCase
@@ -85,7 +85,7 @@ module MultipartParser
           end
         end
         unless got_error
-          assert true, end_called
+          assert_equal true, end_called
           assert_equal fixture.parts, parts
         else
           assert fixture.expect_error,
