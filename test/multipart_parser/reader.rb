@@ -70,5 +70,40 @@ module MultipartParser
       assert_equal 'file1.txt', file[:part].filename
       assert_equal fixture.parts.last[:data], file[:data]
     end
+
+    def test_long
+      fixture = Fixtures::LongBoundary.new
+      reader = Reader.new(fixture.boundary)
+      on_error_called = false
+      parts = {}
+
+      reader.on_error do |err|
+        on_error_called = true
+      end
+
+      reader.on_part do |part|
+        part_entry = {:part => part, :data => '', :ended => false}
+        parts[part.name] = part_entry
+        part.on_data do |data|
+          part_entry[:data] << data
+        end
+        part.on_end do
+          part_entry[:ended] = true
+        end
+      end
+
+      reader.write(fixture.raw)
+
+      assert !on_error_called
+      assert reader.ended?
+
+      assert_equal parts.size, fixture.parts.size
+      assert parts.all? {|k, v| v[:ended]}
+
+      field = parts['field1']
+      assert !field.nil?
+      assert_equal 'field1', field[:part].name
+      assert_equal fixture.parts.first[:data], field[:data]
+    end
   end
 end
