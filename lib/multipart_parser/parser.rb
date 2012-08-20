@@ -22,7 +22,7 @@ module MultipartParser
 
       @boundary_chars = {}
       @boundary.each_byte do |b|
-        @boundary_chars[b] = true
+        @boundary_chars[b.chr] = true
       end
     end
 
@@ -137,7 +137,7 @@ module MultipartParser
               # See http://debuggable.com/posts/parsing-file-uploads-at-500-
               # mb-s-with-node-js:4c03862e-351c-4faa-bb67-4365cbdd56cb
               while i + boundary_length <= buffer_length
-                break if boundary_chars.has_key? buffer[i + boundary_end]
+                break if boundary_chars.has_key? buffer[i + boundary_end].chr
                 i += boundary_length
               end
               c = buffer[i, 1]
