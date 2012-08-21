@@ -11,8 +11,7 @@ module MultipartParser
 
       parser.init_with_boundary("abc")
       assert_equal "\r\n--abc", parser.boundary
-      expected_bc = {13 => true, 10 => true, 45 => true, 97 => true,
-                    98 => true, 99 => true}
+      expected_bc = {"\r"=>true, "\n"=>true, "-"=>true, "a"=>true, "b"=>true, "c"=>true}
       assert_equal expected_bc, parser.boundary_chars
     end
 
