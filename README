@@ -12,6 +12,9 @@ Some things to note:
 
 * Does not depend on any other library.
 
+Latest release: 0.1.1
+  * Fixes some issues with ruby 1.9
+
 Contributors:
   Daniel Abrahamsson
   Jérémy Bobbio
