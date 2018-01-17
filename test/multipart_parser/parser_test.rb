@@ -1,6 +1,6 @@
 require 'test/unit'
-require "multipart_parser/parser"
-require "fixtures/multipart"
+require File.dirname(__FILE__) + "/../../lib/multipart_parser/parser"
+require File.dirname(__FILE__) + "/../fixtures/multipart"
 
 module MultipartParser
   class ParserTest < Test::Unit::TestCase

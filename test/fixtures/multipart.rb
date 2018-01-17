@@ -96,11 +96,11 @@ module MultipartParser::Fixtures
     end
 
     def raw
-      ['----------------------------5c4dc587f69f',
-        'content-disposition: form-data; name="field1"',
-        '',
-        "Joe Blow\r\nalmost tricked you!",
-        '----------------------------5c4dc587f69f--'
+      ['------------------------------5c4dc587f69f',
+       'content-disposition: form-data; name="field1"',
+       '',
+       "Joe Blow\r\nalmost tricked you!",
+       '------------------------------5c4dc587f69f--'
       ].join("\r\n")
     end
   end
